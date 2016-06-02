@@ -10,4 +10,4 @@ coverage:
 	py.test --verbose --cov-report term-missing --cov=aturan_calendar test_aturan_calendar.py
 
 readme:
-	python -c 'import aturan_calendar as cal; from scripts.make_readme import write_doc; write_doc(cal, "README")'
+	python -c 'import aturan_calendar as cal; from scripts.make_readme import write_doc; write_doc(cal, "README.rst")'
