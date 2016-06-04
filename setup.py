@@ -26,7 +26,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3.5',
     ],
-    py_module=[
+    py_modules=[
         'aturan_calendar',
     ],
     install_requires=[
