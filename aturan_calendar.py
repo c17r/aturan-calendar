@@ -228,26 +228,30 @@ def full_calendar():
     :return: :dict: of :dict:, the outer key is the day of the year. Inner keys are 'day_of_year', 'month_of_year',
         'span_of_month', and 'day_of_span'.
     """
-    rtn = []
-    for i in range(1, 360):
-        rtn.append(_create_entry(i))
-        
-    return rtn
+    return {
+        i: _create_entry(i)
+        for i
+        in range(1, 360)
+    }
 
 
 def aturan_calendar_for_western_year(year):
     """
-    Creates a 365 day list of Aturan days for the given Western/Gregorian year.  Aturan years are only 359 days long,
+    Creates a 365 day dictionary of Aturan days for the given Western/Gregorian year.  Aturan years are only 359 days long,
         so at some point the items will change year.
 
     :param year: Integer, the Western/Gregorian year for which you want the Aturan equivalent
-    :return: :list: of :dict:, inner keys are 'day_of_year', 'month_of_year', 'span_of_month', 'day_of_span', and
-        'year'.
+    :return: :dict: of :dict:, Outer key is the Gregorian day of the year, inner keys are 'day_of_year',
+        'month_of_year', 'span_of_month', 'day_of_span', and 'year'.
     """
     year_begin = arrow.get(year, 1, 1)
     year_end = year_begin.replace(years=+1, days=-1)
-    return [western_to_aturan(day) for day
-            in arrow.Arrow.range('day', year_begin, year_end)]
+    idx = 1
+    rtn = {}
+    for day in arrow.Arrow.range('day', year_begin, year_end):
+        rtn[idx] = western_to_aturan(day)
+        idx += 1
+    return rtn
 
 
 def western_to_aturan(dateish):
@@ -255,7 +259,7 @@ def western_to_aturan(dateish):
     Returns the Aturan date information for a given Western/Gregorian date.
 
     :param dateish: datetime.Date, datetime.DateTime, or Arrow. The date for which you want the Aturan equivalent.
-    :return: :dict:, inner keys are 'day_of_year', 'month_of_year', 'span_of_month', 'day_of_span', 'year'.
+    :return: :dict:, keys are 'day_of_year', 'month_of_year', 'span_of_month', 'day_of_span', 'year'.
     """
     days = (_normalize_date(dateish) - _ORIGIN).days
     entry = _create_entry(days)

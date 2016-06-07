@@ -639,41 +639,80 @@ class TestWesternToAturan:
 
 
 def test_full_calendar():
-    expected = [
-        {
+    expected = {
+          1: {
             'day_of_year': 1,
             'month_of_year': 'Thaw',
             'span_of_month': 1,
             'day_of_span': 'Luten',
             'day_of_month': 1,
         },
-        {
+        160: {
             'day_of_year': 160,
             'month_of_year': 'Solace',
             'span_of_month': 3,
             'day_of_span': 'Hepten',
             'day_of_month': 28,
         },
-        {
+        352: {
             'day_of_year': 352,
             'month_of_year': 'Dearth',
             'span_of_month': 4,
             'day_of_span': 'Mourning',
             'day_of_month': 44,
         },
-        {
+        359: {
             'day_of_year': 359,
             'month_of_year': None,
             'span_of_month': None,
             'day_of_span': 'High Mourning Day #7 (Winter\'s Solstice)',
             'day_of_month': None,
         }
-    ]
+    }
 
     result = cal.full_calendar()
 
     assert len(result) == cal.ATURAN_DAYS_IN_YEAR
-    assert result[0] == expected[0]
-    assert result[159] == expected[1]
-    assert result[351] == expected[2]
-    assert result[-1] == expected[-1]
+    for k, v in expected.items():
+        assert result[k] == v
+
+
+def test_aturan_calendar_for_western_year():
+    expected = {
+        1: {
+            'day_of_year': 199,
+            'month_of_year': 'Lannis',
+            'span_of_month': 3,
+            'day_of_span': 'Luten',
+            'day_of_month': 23,
+            'year': 2016,
+        },
+        160: {
+            'day_of_year': 358,
+            'month_of_year': None,
+            'span_of_month': None,
+            'day_of_span': 'High Mourning Day #6',
+            'day_of_month': None,
+            'year': 2016,
+        },
+        352: {
+            'day_of_year': 191,
+            'month_of_year': 'Lannis',
+            'span_of_month': 2,
+            'day_of_span': 'Feochen',
+            'day_of_month': 15,
+            'year': 2017,
+        },
+        359: {
+            'day_of_year': 198,
+            'month_of_year': 'Lannis',
+            'span_of_month': 2,
+            'day_of_span': 'Mourning',
+            'day_of_month': 22,
+            'year': 2017,
+        },
+    }
+
+    result = cal.aturan_calendar_for_western_year(2016)
+    for k in sorted(expected.keys()):
+        assert result[k] == expected[k], 'wrong for entry #{}'.format(k)
