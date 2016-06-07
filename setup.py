@@ -11,7 +11,7 @@ with open(path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='aturan-calendar',
-    version='0.1.0',
+    version='0.1.1',
     description='Gregorian <-> Aturan Calendar Conversion',
     long_description=long_description,
     url='https://github.com/c17r/aturan-calendar',

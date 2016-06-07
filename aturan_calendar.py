@@ -177,13 +177,13 @@ def month_of_year_name(doy):
     Calculates the Aturan month of the year for a given day of the year.
     :param doy: Integer, day of the year to look up. If greater than ATURAN_DAYS_IN_YEAR, value is "normalized"
         i.e. 362 becomes 3
-    :return: :string: The name of the month of the year (i.e. 'Thaw', 'Equis', , 'Caitelyn', etc). The High Mourning
-        Holy Days are not part of a month and thus will be an empty string.
+    :return: :string: or None, The name of the month of the year (i.e. 'Thaw', 'Equis', , 'Caitelyn', etc).
+        The High Mourning Holy Days are not part of a month and thus will be None.
     """
     ndoy = _normalize_doy(doy)
     n = month_of_year(doy)
     if ndoy >= ATURAN_FIRST_HOLY_DAY:
-        return ''
+        return None
     return ATURAN_MONTH_OF_YEAR_NAMES[n]
 
 

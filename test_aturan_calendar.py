@@ -432,7 +432,7 @@ def test_month_of_year_name():
         },
         {
             'days': range(353, 360),
-            'month': ''
+            'month': None
         },
     ]
 
@@ -658,7 +658,7 @@ def test_full_calendar():
         },
         {
             'day_of_year': 359,
-            'month_of_year': '',
+            'month_of_year': None,
             'span_of_month': None,
             'day_of_span': 'High Mourning Day #7 (Winter\'s Solstice)',
         }
