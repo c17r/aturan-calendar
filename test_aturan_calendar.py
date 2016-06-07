@@ -600,14 +600,16 @@ class TestWesternToAturan:
         'month_of_year': 'Reaping',
         'span_of_month': 1,
         'day_of_span': 'Felling',
-        'year': 2007
+        'year': 2007,
+        'day_of_month': 8,
     }
     BIRTHDAY = {
         'day_of_year': 303,
         'month_of_year': 'Fallow',
         'span_of_month': 4,
         'day_of_span': 'Hepten',
-        'year': 2016
+        'year': 2016,
+        'day_of_month': 39,
     }
 
     def test_with_date(self):
@@ -643,24 +645,28 @@ def test_full_calendar():
             'month_of_year': 'Thaw',
             'span_of_month': 1,
             'day_of_span': 'Luten',
+            'day_of_month': 1,
         },
         {
             'day_of_year': 160,
             'month_of_year': 'Solace',
             'span_of_month': 3,
             'day_of_span': 'Hepten',
+            'day_of_month': 28,
         },
         {
             'day_of_year': 352,
             'month_of_year': 'Dearth',
             'span_of_month': 4,
             'day_of_span': 'Mourning',
+            'day_of_month': 44,
         },
         {
             'day_of_year': 359,
             'month_of_year': None,
             'span_of_month': None,
             'day_of_span': 'High Mourning Day #7 (Winter\'s Solstice)',
+            'day_of_month': None,
         }
     ]
 

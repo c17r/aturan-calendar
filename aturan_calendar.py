@@ -101,6 +101,7 @@ def _create_entry(ndoy):
         'month_of_year': month_of_year_name(ndoy),
         'span_of_month': span_of_month_num(ndoy),
         'day_of_span': day_of_span_name(ndoy),
+        'day_of_month': day_of_month_num(ndoy),
     }
 
 
@@ -131,7 +132,8 @@ def day_of_span(doy):
 
 def day_of_month(doy):
     """
-    Calculates the Aturan day of the month for a given day of the year.
+    Calculates the Aturan day of the month for a given day of the year. You probably want to use `day_of_month_num`
+        instead.
 
     :param doy: Integer, day of the year to look up. If greater than ATURAN_DAYS_IN_YEAR, value is "normalized"
         i.e. 362 becomes 3
@@ -198,6 +200,23 @@ def span_of_month_num(doy):
     """
     ndoy = _normalize_doy(doy)
     n = span_of_month(ndoy)
+    if ndoy >= ATURAN_FIRST_HOLY_DAY:
+        return None
+    return n
+
+
+def day_of_month_num(doy):
+    """
+    Calulates the Aturan day of the month for a given day of the year.
+
+    :param doy: Integer, day of the year to look up. If greater than ATURAN_DAYS_IN_YEAR, value is "normalized"
+        i.e. 362 becomes 3
+    :return: :int: or None, The numerical value of the day of the month (1-44). The High Mourning Holy Days are not
+        part of a month and thus will be None.
+    """
+    ndoy = _normalize_doy(doy)
+    n = day_of_month(ndoy)
+
     if ndoy >= ATURAN_FIRST_HOLY_DAY:
         return None
     return n
