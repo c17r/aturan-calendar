@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/aturan-calendar.iml" filepath="$PROJECT_DIR$/.idea/aturan-calendar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../aturan-calendar-bot/.idea/aturan-calendar-bot.iml" filepath="$PROJECT_DIR$/../aturan-calendar-bot/.idea/aturan-calendar-bot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../aturan-calendar-web/.idea/aturan-calendar-web.iml" filepath="$PROJECT_DIR$/../aturan-calendar-web/.idea/aturan-calendar-web.iml" />
     </modules>
   </component>
 </project>
