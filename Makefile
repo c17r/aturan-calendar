@@ -1,19 +1,29 @@
-.PHONY: readme version check-ver
+.PHONY: readme
 
 init:
-	pip install -r requirements.lock
+	pip install -U pipenv
+	pipenv install --dev
 
-test:
-	py.test -v test_aturan_calendar.py
+update:
+	pipenv update --dev
 
-coverage:
-	py.test --verbose --cov-report term-missing --cov=aturan_calendar test_aturan_calendar.py
+flake:
+	pipenv run flake8
+
+test: flake
+	pipenv run py.test
+
+coverage: flake
+	pipenv run py.test --cov-report term-missing:skip-covered --cov=.
+
+tox:
+	pipenv run tox
 
 readme:
-	python -c 'import aturan_calendar as cal; from scripts.make_readme import write_doc; write_doc(cal, "README.rst")'
+	pipenv run python -c 'from src import aturan_calendar as cal; from scripts.make_readme import write_doc; write_doc(cal, "README.rst")'
 
-version: check-VER
-	@echo version is $(VER)
-	
-check-%:
-	@if [ -z '${${*}}' ]; then echo "$* not set" && exit 1; fi
+upload: readme
+	pipenv run ./setup.py upload
+
+test-upload: readme
+	pipenv run ./setup.py test_upload

@@ -1,9 +1,8 @@
+import datetime
+import arrow
 import pytest
 
 import aturan_calendar as cal
-import arrow
-import datetime
-
 
 class TestConstants:
     def test_days_in_year(self):

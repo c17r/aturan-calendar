@@ -1,0 +1,15 @@
+language: python
+python:
+  - "3.4"
+  - "3.5"
+  - "3.6"
+  - "3.6-dev"
+  - "nightly"
+
+install:
+  - make
+  - pip install coveralls
+
+script: make coverage
+
+after_success: coveralls

@@ -1,4 +1,0 @@
-arrow<0.8.0
-
-pytest
-pytest-cov

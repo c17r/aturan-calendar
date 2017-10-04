@@ -1,23 +1,4 @@
-.. start-badges
-
-.. list-table::
-    :stub-columns: 1
-
-    * - tests
-        - |coveralls|
-    * - package
-        - |travis|
-
-.. |travis| image:: https://travis-ci.org/c17r/aturan-calendar.svg?branch=master
-    :alt: Travis-CI Build Status
-    :target: https://travis-ci.org/c17r/aturan-calendar
-
-.. |coveralls| image:: https://coveralls.io/repos/github/c17r/aturan-calendar/badge.svg?branch=master
-    :alt: Coverage Status
-    :target: https://coveralls.io/repos/github/c17r/aturan-calendar
-
-.. end-badges
-
+"""
 aturan_calendar
 ~~~~~~~~~~~~~~~
 Converts Western/Gregorian dates into Aturan dates. From the wonderful world of Patrick Rothfuss in The Kingkiller Chronicles.
@@ -52,3 +33,7 @@ Given everything above, that would make 27-Mar-2007 line up with Felling Night i
 
 As mentioned above, some of this is just guesswork. If `Day 3` gives better insight, this will be updated.
 
+"""  # noqa
+
+from .core import *  # noqa
+from .core import _ORIGIN  # noqa
