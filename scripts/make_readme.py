@@ -7,9 +7,9 @@ def write_doc(module, filename):
     :stub-columns: 1
 
     * - tests
-        - |coveralls|
+      - |coveralls|
     * - package
-        - |travis|
+      - |travis|
 
 .. |travis| image:: https://travis-ci.org/c17r/aturan-calendar.svg?branch=master
     :alt: Travis-CI Build Status
