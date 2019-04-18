@@ -209,7 +209,7 @@ def aturan_calendar_for_western_year(year):
         'month_of_year', 'span_of_month', 'day_of_span', and 'year'.
     """
     year_begin = arrow.get(year, 1, 1)
-    year_end = year_begin.replace(years=+1, days=-1)
+    year_end = year_begin.shift(years=+1, days=-1)
     idx = 1
     rtn = {}
     for day in arrow.Arrow.range('day', year_begin, year_end):
