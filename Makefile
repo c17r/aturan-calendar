@@ -1,32 +1,32 @@
 .PHONY: readme
 
 init:
-	@pip install -U pipenv
-	@pipenv install --dev
+	@pip install -U poetry
+	@poetry install
 
 update:
-	@pipenv update --dev
+	@poetry update
 
 flake:
-	@pipenv run flake8
+	@poetry run flake8
 
 test: flake
-	@pipenv run py.test
+	@poetry run py.test
 
 coverage: flake
-	@pipenv run py.test --cov-report term-missing:skip-covered --cov=.
+	@poetry run py.test --cov-report term-missing:skip-covered --cov=.
 
 readme:
-	@pipenv run python -c 'from src import aturan_calendar as cal; from scripts.make_readme import write_doc; write_doc(cal, "README.rst")'
+	@poetry run python -c 'from src import aturan_calendar as cal; from scripts.make_readme import write_doc; write_doc(cal, "README.rst")'
 
 tox: readme
-	@pipenv run tox --workdir ~/.cache/tox
+	@poetry run tox --workdir ~/.cache/tox
 
 upload: readme
-	@pipenv run ./setup.py upload
+	@poetry run ./setup.py upload
 
 test-upload: readme
-	@pipenv run ./setup.py test_upload
+	@poetry run ./setup.py test_upload
 
 clean:
 	@find -E . -regex ".*\.py[cod]" -delete

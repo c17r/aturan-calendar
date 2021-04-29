@@ -10,6 +10,8 @@ install:
   - make
   - pip install coveralls
 
-script: make coverage
+script:
+  - make init
+  - make coverage
 
 after_success: coveralls
